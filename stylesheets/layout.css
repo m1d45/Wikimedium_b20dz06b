@@ -1,7 +1,15 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+       url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+}
 * {
   box-sizing: border-box;
 }
-body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'PT Sans', sans-serif;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'PT Sans', sans-serif;
 }
 a { color: inherit;
 }
@@ -24,4 +32,7 @@ a { color: inherit;
 .menubar img {
   height: 80%;
   width: auto;
+}
+.menubar {
+  font-family: "Open Sans";
 }
