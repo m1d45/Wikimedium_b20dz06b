@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    body {
+      background: #bbb;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .btn {
+      width: 300px;
+      height: 50px;
+      background: black;
+      color: white;
+      position: relative;
+      padding: 15px 0;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 3px;
+      position: absolute;
+      top: 70px;
+      transition: all 2s;
+    }
+    .btn:hover {
+      background: red;
+      transition: all .2s;
+    }
+    .btn:hover ~ .container .row {
+      animation-play-state: paused;
+    }
+    .container {
+      width: 300px;
+      height: 50px;
+      background: white;
+      position: relative;
+      padding: 15px 0;
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .row {
+      /* background: red; */
+      width: 1845px;
+      height: 20px;
+      display: block;
+      position: absolute;
+      animation: row-move 10s linear infinite;
+      /* animation-delay: -118s; */
+    }
+    .clock {
+      width: 300px;
+      height: 100px;
+      /* background: white; */
+      position: relative;
+      /* overflow: hidden; */
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .cl-e {
+      width: 60px;
+      height: 100px;
+      background: black;
+      background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(48,48,48,1) 75%, rgba(0,0,0,1) 100%);
+      display: inline-block;
+      color: white;
+      vertical-align: top;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      /* animation: clock 1s infinite; */
+
+
+    }
+    .cl-d {
+      width: 15px;
+      height: 100px;
+      display: inline-block;
+      color: black;
+      vertical-align: top;
+      font-size: 70px;
+      line-height: 90px;
+      animation: blink .5s alternate linear infinite;
+    }
+    .num {
+      width: 60px;
+      font-size: 50px;
+      line-height: 100px;
+      position: absolute;
+    }
+    .sec-e {
+      animation: sec 10s linear infinite;
+      /* animation: sec 10s steps(10) infinite; */
+    }
+    .sec-d {
+      animation: dec 60s steps(6) infinite;
+    }
+    .min-e {
+      animation: sec 600s steps(10) infinite;
+    }
+    .min-d {
+      animation: dec 3600s steps(6) infinite;
+    }
+    @keyframes row-move {
+      0% {right: -1549px;}
+      100% {right: calc(100% - 315px);}
+    }
+    @keyframes blink {
+      0% {opacity: 1;}
+      100% {opacity: 0;}
+    }
+    @keyframes sec {
+      0% {top: 0;}
+      100% {top: -1000%;}
+    }
+    @keyframes dec {
+      0% {top: 0;}
+      100% {top: -600%;}
+    }
+    @keyframes clock {
+      0% {margin-top: 0;}
+      40% {margin-top: -5px;}
+      100%{margin-top: 0;}
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="btn">||</div>
+
+    <div class="container">
+      <div class="row">
+        The Portrait of Cardinal Niccolò Albergati is an oil-on-oak-panel painting by the Early Netherlandish painter Jan van Eyck, dating to the 1430s. It is of considerable interest to art historians because van Eyck's preliminary drawing survives. The Portrait of Cardinal Niccolò Albergati is an
+      </div>
+    </div>
+
+    <div class="clock">
+      <div class="cl-e">
+        <div class="num min-d">
+          0 1 2 3 4 5
+        </div>
+      </div>
+      <div class="cl-e">
+        <div class="num min-e">
+          0 1 2 3 4 5 6 7 8 9 0
+        </div>
+      </div>
+      <div class="cl-d">:</div>
+      <div class="cl-e">
+        <div class="num sec-d">
+          0 1 2 3 4 5
+        </div>
+      </div>
+      <div class="cl-e">
+        <div class="num sec-e">
+          0 1 2 3 4 5 6 7 8 9 0
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </body>
+</html>
