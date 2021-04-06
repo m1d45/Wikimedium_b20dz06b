@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style media="screen">
+    body {
+      height: 2000px;
+    }
+    div {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 300px;
+      width: 100%;
+      background: url('https://images.theconversation.com/files/283650/original/file-20190711-173325-1oj4n2t.jpg') center;
+      background-size: cover;
+    }
+    .svg {
+      position: fixed;
+      left: -110px;
+      top: 100px;
+    cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.svg"), auto;
+    }
+    .png {
+    cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png"), auto;
+    }
+    .box {
+    width: 100px;
+    height: 100px;
+    background: black;
+    display: inline-block;
+    /* position: relative; */
+    border: 1px solid white;
+    }
+    #draggable {
+    	background: orange;
+    	color: white;
+    	width: 200px;
+    	height: 200px;
+    	line-height: 200px;
+    	text-align: center;
+    	cursor: move;
+    }
+    #draggable:hover {
+    	background: #e69500;
+    }
+    </style>
+    <script>
+    $(function() {
+      $("#draggable").draggable();
+    });
+
+    let x;
+
+    $(window).on('scroll', function() {
+    	x = $(window).scrollTop();
+    	$('.svg').css('left', -110 + parseInt(x) + 'px ');
+    });
+
+    $(function () {
+      let count = 0;
+      $(window).click(function () {
+        count += 1;
+
+	      $("#textcount").html(count);
+
+        if (count == 2) {
+          $('.box').removeClass('png');
+        }
+        if (count >= 3) {
+          $('#textcount').css('color', 'orange');
+        }
+        if (count >= 6) {
+          $('#textcount').css('color', 'red');
+        }
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <div class="box png">
+      <p style="color:white;" id="textcount">0</p>
+    </div>
+    <div class="box svg"></div>
+    <!-- <div id="test2" class="box test"></div> -->
+    <!-- <div id="draggable">
+      Text
+    </div> -->
+    <!-- <div class="">
+
+    </div> -->
+
+
+  </body>
+</html>
