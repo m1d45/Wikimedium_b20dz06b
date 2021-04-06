@@ -1,7 +1,15 @@
+/* @font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+       url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+} */
 * {
   box-sizing: border-box;
 }
-body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'PT Sans', sans-serif;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'PT Sans', sans-serif;
 }
 a { color: inherit;
 }
@@ -13,15 +21,21 @@ a { color: inherit;
   align-items: center;
   height: 50px;
   padding: 0 20px;
-  border-bottom: 1px solid #aaa;
-  box-shadow: 0 2px 4px 1px rgba(0,0,0,.3);
+  /* border-bottom: 1px solid #aaa; */
+  box-shadow: 0 2px 4px 1px rgba(0,0,0,.1);
+  background: white;
 }
 .menubar a {
   height: 20px;
   color: #aaa;
   text-decoration: none;
+  font-family: 'PT Sans', sans-serif;
+
 }
 .menubar img {
   height: 80%;
   width: auto;
+}
+.menubar {
+  font-family: "Open Sans";
 }
