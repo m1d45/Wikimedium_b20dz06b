@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- <link rel="stylesheet" href="stylesheets/reset.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mailtoharshit/San-Francisco-Font-/sanfrancisco.css">
     <style media="screen">
         * {
           box-sizing: border-box;
+        }
+        *:focus {
+          outline: none;
         }
         body, html {
           margin: 0;
@@ -83,6 +88,9 @@
           height: 44px;
           z-index: 100;
         }
+        nav > * {
+          transition: all .5s ease;
+        }
         nav a {
           color: white;
           text-decoration: none;
@@ -136,9 +144,38 @@
           margin: 0 auto;
           display: flex;
           justify-content: space-between;
+          /* display: none; */
+        }
+        .menu-search.fade {
+          transform: translateX(10px);
+        }
+        .menu-search.fade > span {
+          transform: translateX(14px);
+        }
+        .menu-search > span {
+          transition: all .6s ease;
+        }
+        .menu-search.fade > a {
+          transform: translateX(8px);
+        }
+        .menu-search > a {
+          transition: all .6s ease;
         }
         .menu-search {
-          display: none;
+          display: flex;
+          margin: 0 auto;
+          width: 500px;
+          justify-content: space-between;
+          transition: all .3s ease;
+        }
+        .menu-search input {
+          margin: 0 auto;
+          height: 44px;
+          background: transparent;
+          border: none;
+          font-size: 17px;
+          color: white;
+          font-weight: 200;
         }
         .banner {
           display: block;
@@ -196,17 +233,100 @@
           right: 20%;
           bottom: 0;
         }
+        .icon {
+          width: 16px;
+          height: 44px;
+          display: block;
+          position: relative;
+          margin: 0px 5px;
+          background-position: 0 0;
+          background-size: 100% auto;
+          background-repeat: no-repeat;
+        }
+        .cross {
+          display: block;
+          position: absolute;
+          width: 1px;
+          background: #aaa;
+          height: 20px;
+          top: 12px;
+        }
+        .cross-1 {
+          transform: rotate(45deg);
+        }
+        .cross-2 {
+          transform: rotate(-45deg);
+        }
+        .black_screen {
+          position: fixed;
+          display: block;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.5);
+          -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+          z-index: 10;
+          transition: all .3s ease;
+        }
+        .fade {
+          opacity: 0;
+        }
+        .menu-items.fade a {
+          transform: scale(.9);
+          transition: all .4s ease;
+        }
+        .hidden {
+          display: none;
+        }
+
+        #logo_icon {
+          background-image: url('images/apple.svg');
+        }
+        #search_icon {
+          background-image: url('images/search.svg');
+          background-position: 0 3px;
+        }
+        #cart_icon {
+          background-image: url('images/cart.svg');
+        }
+        /* #close_icon {
+          margin:
+        } */
         @keyframes rotate-circles {
           0% {transform: rotate(0deg);}
           100% {transform: rotate(360deg);}
         }
 
     </style>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".menu-items #search_icon, #close_icon").click(function () {
+          $(this).parent().toggleClass('fade');
+          $(".black_screen").toggleClass('fade');
+          setTimeout(function () {
+            $(".menu-items, .menu-search, .black_screen").toggleClass('hidden');
+          },600);
+          setTimeout(function () {
+            $(".black_screen").toggleClass('fade');
+
+            if ($(".menu-items").hasClass('hidden')) {
+              $(".menu-search").toggleClass('fade');
+            } else {
+              $(".menu-items").toggleClass('fade');
+            }
+          },700);
+        })
+
+      });
+    </script>
   </head>
   <body>
+    <div class="black_screen hidden"></div>
     <nav>
       <div class="menu-items">
-        <a href="#">Logo</a>
+        <a href="#"><i class="icon" id="logo_icon"></i></a>
         <a href="#">Mac</a>
         <a href="#">iPad</a>
         <a href="#">iPhone</a>
@@ -214,11 +334,18 @@
         <a href="#">TV</a>
         <a href="#">Music</a>
         <a href="#">Support</a>
-        <a href="#">Search</a>
-        <a href="#">Cart</a>
+        <a href="#" class="icon" id="search_icon"><i ></i></a>
+        <a href="#"><i class="icon" id="cart_icon"></i></a>
       </div>
-      <div class="menu-search">
-        <span></span><input type="text" name="" value=""><a href="#"></a>
+      <div class="menu-search hidden fade">
+        <span>
+          <i class="icon" id="search_icon"></i>
+        </span>
+        <input type="text" name="" value="" placeholder="Search apple.com">
+        <a class="icon" id="close_icon" href="#">
+          <span class="cross cross-1"></span>
+          <span class="cross cross-2"></span>
+        </a>
       </div>
     </nav>
     <div class="banner">
