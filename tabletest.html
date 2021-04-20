@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <link rel="stylesheet" href="stylesheets/reset.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style media="screen">
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td, #new_row > * {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        padding: 5px 8px 6px;
+        font-size: 14px;
+        text-align: left;
+        height: 32px;
+        width: 20%;
+      }
+      th {
+        color: #aaa;
+        font-weight: 400;
+        border-top: 1px solid #ddd;
+      }
+      th:hover {
+        background: #eee;
+        cursor: pointer;
+      }
+      th:last-of-type {
+        width: 28px;
+        font-size: 18px;
+        text-align: center;
+      }
+      th:first-of-type,
+      td:first-of-type,
+      #new_row > input:first-of-type {
+        width: 10%;
+      }
+      th:nth-of-type(2),
+      td:nth-of-type(2),
+      #new_row > input:nth-of-type(2) {
+        width: 30%;
+        font-weight: 600;
+      }
+      th:last-of-type,
+      td:last-of-type {
+        border-right: none;
+      }
+
+
+      td > span {
+        display: inline-block;
+        background: #bbb;
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin: 0 4px 4px 0;
+      }
+      .sp_green {
+        background: rgba(0, 135, 107, 0.2);
+      }
+      .sp_red {
+        background: rgba(255, 0, 26, 0.2);
+      }
+      #new_row {
+        width: 100%;
+        display: flex;
+        border-collapse: collapse;
+
+      }
+      #new_row > * {
+        display: table-cell;
+      }
+      #new_row > *:focus {
+        outline: none;
+
+      }
+      #new_row select {
+        border-radius: 0;
+        -webkit-appearance:none;
+      }
+      #new_row > button {
+        width: 28px;
+        font-size: 18px;
+        text-align: center;
+        background: transparent;
+        border-right: none;
+      }
+
+
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        let week;
+        let name_of;
+        let date;
+        let disc;
+        let type;
+        let next_row;
+        $("#new_row button").click(function() {
+          week = $("input[name='week']").val();
+          name_of = $("input[name='name_of']").val();
+          date = $("input[name='date']").val();
+          disc = $("select[name='disc']").val();
+          type = $("select[name='type']").val();
+
+          next_row = '<tr><td>'+week+'</td><td>'+name_of+'</td><td>'+date+'</td><td><span class="sp_red">'+disc+'</span></td><td><span class="sp_green">'+type+'</span></td><td></td></tr>'
+          $("table tbody tr:last-child").after(next_row);
+
+          $(".test").html(week+', '+name_of+', '+date+', '+disc+', '+type);
+          // $("input[name='week'], input[name='name_of'], input[name='date'],select[name='disc'],select[name='type']").val("");
+          $("#new_row input").val("");
+
+
+
+        })
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <h3>Расписание</h3>
+      <thead>
+        <tr>
+          <th>Неделя</th>
+          <th>Название</th>
+          <th>Дата</th>
+          <th>Предмет</th>
+          <th>Тип</th>
+          <th>+</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Верстаем форму</td>
+          <td>Apr 6, 2021</td>
+          <td><span class="sp_red">Технологии</span></td>
+          <td><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Верстаем форму</td>
+          <td>Apr 6, 2021</td>
+          <td><span class="sp_red">Технологии</span></td>
+          <td><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Верстаем форму</td>
+          <td>Apr 6, 2021</td>
+          <td><span class="sp_red">Технологии</span></td>
+          <td><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Верстаем форму</td>
+          <td>Apr 6, 2021</td>
+          <td><span class="sp_red">Технологии</span></td>
+          <td><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span><span class="sp_green">Воркшоп</span></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <form id="new_row">
+      <input type="text" name="week" value="" placeholder="Неделя">
+      <input type="text" name="name_of" value="" placeholder="Название">
+      <input type="text" name="date" value="" placeholder="Дата">
+      <select class="" name="disc">
+        <option value="nothing">Предмет</option>
+      </select>
+      <select class="" name="type">
+        <option value="atypical">Тип</option>
+      </select>
+      <button type="button" name="button">+</button>
+    </form>
+    <div class="test">
+    </div>
+
+  </body>
+</html>
