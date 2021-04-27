@@ -110,13 +110,22 @@
           week = $("input[name='week']").val();
           name_of = $("input[name='name_of']").val();
           date = $("input[name='date']").val();
-          disc = $("select[name='disc']").val();
+
+          if ($("select[name='disc']").val() == 'desc_art') {
+            disc = '<span class="sp_red">Арт-практика</span>';
+          } else if ($("select[name='disc']").val() == 'desc_tech') {
+            disc = '<span class="sp_green">Технологии</span>';
+          } else {
+            disc = '<span class="">Предмет</span>';
+          }
+
           type = $("select[name='type']").val();
 
-          next_row = '<tr><td>'+week+'</td><td>'+name_of+'</td><td>'+date+'</td><td><span class="sp_red">'+disc+'</span></td><td><span class="sp_green">'+type+'</span></td><td></td></tr>'
+
+          next_row = '<tr><td>'+week+'</td><td>'+name_of+'</td><td>'+date+'</td><td>'+disc+'</td><td><span class="sp_green">'+type+'</span></td><td></td></tr>'
           $("table tbody tr:last-child").after(next_row);
 
-          $(".test").html(week+', '+name_of+', '+date+', '+disc+', '+type);
+          // $(".test").html(week+', '+name_of+', '+date+', '+disc+', '+type);
           // $("input[name='week'], input[name='name_of'], input[name='date'],select[name='disc'],select[name='type']").val("");
           $("#new_row input").val("");
 
@@ -180,6 +189,9 @@
       <input type="text" name="date" value="" placeholder="Дата">
       <select class="" name="disc">
         <option value="nothing">Предмет</option>
+        <option value="desc_art">Арт-практика</option>
+        <option value="desc_tech">Технологии</option>
+
       </select>
       <select class="" name="type">
         <option value="atypical">Тип</option>
